@@ -1,0 +1,7 @@
+firmware/Debug/
+firmware/Release/
+ros_ws/build/
+ros_ws/devel/
+*.elf
+*.hex
+*.bin
