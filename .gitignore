@@ -9,4 +9,4 @@ ros_ws/devel/
 *.hex
 *.bin
 .claude/settings.json
-
+.claude/settings.local.json

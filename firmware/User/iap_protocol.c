@@ -14,7 +14,7 @@
 #define CMD_FINISH   0x46  // 'F'
 #define CMD_INFO     0x49  // 'I'
 
-#define MAX_PAYLOAD  1028
+#define MAX_PAYLOAD  (FLASH_PAGE_SIZE + 4)  // data + page_idx(2) + crc(2)
 
 // ─── Parser state ─────────────────────────────────────────────────
 
