@@ -10,13 +10,3 @@ ros_ws/devel/
 *.bin
 .claude/settings.json
 
-{
-"env": {
-"ANTHROPIC_AUTH_TOKEN": "sk-2111e9fa958745089e2f4acf4015357e",
-"ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-"API_TIMEOUT_MS": "3000000",
-"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
-"ANTHROPIC_MODEL":"deepseek-v4-pro",
-"ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-pro"
-}
-}
