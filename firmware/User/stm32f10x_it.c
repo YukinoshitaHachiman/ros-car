@@ -23,6 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "icm20948.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -144,13 +145,14 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief  This function handles PPP interrupt request.
+  * @brief  This function handles EXTI4 (ICM20948 INT1) interrupt request.
   * @param  None
   * @retval None
   */
-/*void PPP_IRQHandler(void)
+void EXTI4_IRQHandler(void)
 {
-}*/
+    icm20948_irq_handler();
+}
 
 /**
   * @}

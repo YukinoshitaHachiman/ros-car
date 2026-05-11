@@ -8,7 +8,11 @@
 - [x] Flash 分区管理 (`User/flash_partition.h`) — 定义 Bootloader/App/Storage 分区布局
 - [x] Flash 操作模块 (`User/flash_ops.c`) — Flash 擦除/写入底层封装 + Storage 分区操作
 - [x] IAP 协议模块 (`User/iap_protocol.c`) — CRC16 校验、帧解析状态机、命令分发
-- [x] 主程序 (`User/main.c`) — 仅初始化 + 轮询接收字节送入协议模块
+- [x] 主程序 (`User/main.c`) — 初始化 + 轮询接收字节送入协议模块 + 读取 IMU 数据
+- [x] ICM20948 驱动 (`User/icm20948.c`) — SPI 模式，中断方式读取 9 轴数据
+  - SPI2: PB12(CS)/PB13(SCLK)/PB14(MISO)/PB15(MOSI)，Mode 3, 4.5MHz
+  - INT1: PA4 下降沿触发，脉冲模式，RAW_DATA_RDY 中断
+  - 传感器配置: Gyro ±500dps, Accel ±4g
 
 ### 分区布局 (STM32F103RCT6, 256KB, 2KB/page)
 | 区域          | 起始地址    | 大小   | 页范围    | 用途             |
