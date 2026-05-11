@@ -6,7 +6,9 @@
 - [x] delay 模块 (`User/delay.c`) — SysTick 单次计时，微秒/毫秒延时
 - [x] USART 调试模块 (`User/usart_debug.c`) — USART1 初始化，环形缓冲 TX/RX，printf 重定向
 - [x] Flash 分区管理 (`User/flash_partition.h`) — 定义 Bootloader/App/Storage 分区布局
-- [x] 主程序 (`User/main.c`) — 帧解析、固件接收、Flash 写入存储分区
+- [x] Flash 操作模块 (`User/flash_ops.c`) — Flash 擦除/写入底层封装 + Storage 分区操作
+- [x] IAP 协议模块 (`User/iap_protocol.c`) — CRC16 校验、帧解析状态机、命令分发
+- [x] 主程序 (`User/main.c`) — 仅初始化 + 轮询接收字节送入协议模块
 
 ### 分区布局 (STM32F103C8, 64KB)
 | 区域       | 起始地址    | 大小   | 用途             |
