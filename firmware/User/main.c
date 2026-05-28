@@ -5,6 +5,7 @@
 #include "iap_protocol.h"
 #include "icm20948.h"
 #include "motor.h"
+#include "sysmon.h"
 #include <stdio.h>
 
 int main(void)
@@ -18,6 +19,7 @@ int main(void)
     iap_protocol_init();
     icm20948_init();
     motor_init();
+    sysmon_init();
 
     printf("\r\n==================================\r\n");
     printf("  ROSbot IAP App v1.0\r\n");
@@ -34,6 +36,8 @@ int main(void)
     motor_test();
 
     for (;;) {
+        sysmon_update();
+
         n = usart_debug_recv_bytes(buf, sizeof(buf));
         for (i = 0; i < n; i++) {
             iap_protocol_feed(buf[i]);
