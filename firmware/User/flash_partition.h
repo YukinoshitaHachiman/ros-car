@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 
 // STM32F103RCT6 (high density): 256KB Flash, 2KB/page
-#define FLASH_BASE          0x08000000
+//#define FLASH_BASE          0x08000000
 #define FLASH_SIZE          (256 * 1024)
 #define FLASH_PAGE_SIZE     2048
 #define FLASH_PAGE_COUNT    128

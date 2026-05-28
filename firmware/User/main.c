@@ -10,6 +10,7 @@
 
 int main(void)
 {
+		SCB->VTOR = 0x08004000;
     uint8_t  buf[32];
     uint16_t i, n;
     uint8_t  whoami;
@@ -29,8 +30,10 @@ int main(void)
     printf("  APP: 0x%08X %dK\r\n", APP_ADDR, APP_SIZE / 1024);
     printf("  STO: 0x%08X %dK\r\n", STORAGE_ADDR, STORAGE_SIZE / 1024);
 
-    whoami = icm20948_read_byte(ICM_WHO_AM_I);
+    whoami = icm20948_read_byte(UB_0, ICM_WHO_AM_I);
     printf("  ICM20948 WHO_AM_I: 0x%02X\r\n", whoami);
+    printf("  FS: gyro=+-2000dps accel=+-16g\r\n");
+    printf("  Calibration done in init\r\n");
     printf("==================================\r\n");
 
     motor_test();
@@ -43,7 +46,7 @@ int main(void)
             iap_protocol_feed(buf[i]);
         }
 
-        if (icm20948_data_ready()) {
+        if (icm20948_data_ready() || icm20948_data_ready_poll()) {
             icm20948_data_t imu;
             icm20948_read_sensor_data(&imu);
             printf("IMU: a(%d,%d,%d) g(%d,%d,%d) t=%d\r\n",

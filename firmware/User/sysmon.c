@@ -48,6 +48,7 @@ void sysmon_update(void)
     if (tick_elapsed(last_adc) >= 100) {
         last_adc = now;
         bat_mv = adc_battery_read_mv();
+				//printf("battery = %d",bat_mv);
     }
 
     // ── OLED display (200ms) ───────────────────────────────────────────

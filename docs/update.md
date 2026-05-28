@@ -1,5 +1,19 @@
 # 功能更新记录
 
+## 2026-05-28 - ICM20948 驱动修复与校准
+
+### 修复内容
+- [x] CS 引脚模式修复: PB12 从 AF_PP 改为 Out_PP（软件控制 CS）
+- [x] SPI 模式修正: Mode 3 → Mode 0 (CPOL=Low, CPHA=1Edge)
+- [x] Bank 选择修复: `(bank << 4) & 0x30` 正确映射到 REG_BANK_SEL bit[5:4]
+- [x] Accel 量程修复: ACCEL_FS 值对齐到 FS_SEL bit[2:1]
+- [x] 数据/配置路径分离: 数据读取用 fast path（无 bank 切换），配置用 bank-parameterized path
+- [x] 有符号扩展修复: `(int16_t)(((uint16_t)high<<8)|low)` 替代 `((int16_t)high<<8)|low`
+- [x] 自动校准: init 时 500 样本 accel + 500 样本 gyro 零偏校准
+- [x] 数据就绪双通道: EXTI 中断 + INT_STATUS_1 轮询兜底
+- [x] 传感器配置更新: Gyro ±2000dps, Accel ±16g
+- [x] I2C_IF_DIS: 禁用 I2C 接口强制 SPI 模式
+
 ## 2026-05-28 - STM32 电机驱动 + 杂项外设
 
 ### 已实现 — 电机
