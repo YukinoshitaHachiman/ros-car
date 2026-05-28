@@ -4,6 +4,7 @@
 #include "flash_partition.h"
 #include "iap_protocol.h"
 #include "icm20948.h"
+#include "motor.h"
 #include <stdio.h>
 
 int main(void)
@@ -16,6 +17,7 @@ int main(void)
     usart_debug_init();
     iap_protocol_init();
     icm20948_init();
+    motor_init();
 
     printf("\r\n==================================\r\n");
     printf("  ROSbot IAP App v1.0\r\n");
@@ -28,6 +30,8 @@ int main(void)
     whoami = icm20948_read_byte(ICM_WHO_AM_I);
     printf("  ICM20948 WHO_AM_I: 0x%02X\r\n", whoami);
     printf("==================================\r\n");
+
+    motor_test();
 
     for (;;) {
         n = usart_debug_recv_bytes(buf, sizeof(buf));
